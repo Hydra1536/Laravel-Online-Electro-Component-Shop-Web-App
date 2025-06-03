@@ -16,8 +16,6 @@ return new class extends Migration
             $table->string('product_name');
             $table->integer('product_price');
             $table->text('product_description');
-            $table->text('how_to_use');
-            $table->text('product_ingredients');
             $table->timestamps();
         });
     }

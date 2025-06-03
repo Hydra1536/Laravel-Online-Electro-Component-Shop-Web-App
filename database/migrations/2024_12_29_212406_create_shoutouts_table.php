@@ -11,19 +11,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
-            $table->id('ingredient_id');
-            $table->text('ingredient_description');
+        Schema::create('shoutouts', function (Blueprint $table) {
+            $table->id();
+            $table->string('username');
+            $table->text('message');
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('shoutouts');
     }
 };

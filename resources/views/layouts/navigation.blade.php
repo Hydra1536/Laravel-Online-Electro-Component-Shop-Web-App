@@ -16,26 +16,35 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('blogs')" :active="request()->routeIs('blogs')">
+                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
                         {{ __('Blogs') }}
                     </x-nav-link>
-
-                    <x-nav-link :href="route('community')" :active="request()->routeIs('community')">
-                        {{ __('Community') }}
+                    <x-nav-link :href="route('compare.index')" :active="request()->routeIs('compare.index')">
+                        {{ __('Compare') }}
                     </x-nav-link>
-
-                    <x-nav-link :href="route('products')" :active="request()->routeIs('products')">
-                        {{ __('Products') }}
+                    <x-nav-link :href="route('shoutout.index')" :active="request()->routeIs('shoutout.index')">
+                        {{ __('Shoutout') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('cart.show')" :active="request()->routeIs('cart.show')">
+                        {{ __('Cart') }}
+                    </x-nav-link>
+                
+                    
+                    <x-nav-link :href="route('my.orders')" :active="request()->routeIs('cart.show')">
+                        {{ __('MyOrders') }}
+                    </x-nav-link>
+                    
+                    
+
                 </div>
             </div>
-
+            
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::check() ? Auth::user()->name : 'Guest' }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -87,8 +96,10 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                <!-- //<div>{{ Auth::check() ? Auth::user()->name : 'Guest' }}</div> -->
+
+                <div class="font-medium text-base text-gray-800">{{ Auth::check() ? Auth::user()->name : 'Guest' }}</div>
+                <div class="font-medium text-sm text-gray-500">{{ Auth::check() ? Auth::user()->email: 'Guest' }}</div>
             </div>
 
             <div class="mt-3 space-y-1">
